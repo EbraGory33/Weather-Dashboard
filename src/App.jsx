@@ -1,10 +1,12 @@
+import { WeatherProvider } from "./context/WeatherContext.jsx";
 import WeatherDashboard from "./pages/WeatherDashboard.jsx";
-import "./styles/App.css";
 
 function App() {
   return (
     <>
-      <WeatherDashboard />
+      <WeatherProvider>
+        <WeatherDashboard />
+      </WeatherProvider>
     </>
   );
 }

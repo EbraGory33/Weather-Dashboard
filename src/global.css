@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+  1. Base Reset
+========================================================================== */
+#root,
+body,
+html {
+  min-width: 985px;
+  min-height: 640px;
+  width: 100%;
+  height: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+
+/* TEMP: Debug overflow layout */
+* {
+  border: 1px solid red;
+}
+
+/* ==========================================================================
+  2. Root Variables
+========================================================================== */
+:root {
+  /* --color-background-Sunny: #ffe27a;
+  --color-background-PartlyCloudy: #d8e2eb;
+  --color-background-Cloudy: #b6c2cf;
+  --color-background-Rain: #7a9bb8; */
+  --color-background-Drizzle: #a7bccb;
+  /* --color-background-Thunderstorm: #4a5463;
+  --color-background-Snow: #eef3f8;
+  --color-background-Windy: #c7d7e2;
+  --color-background-Fog: #d1d5d8;
+  --color-background-Ice: #d6e8f5;
+  --color-background-Hot: #f9a66c; */
+  --color-background-ClearNight: #1c2541;
+  /* --color-background-CloudyNight: #2e354a; */
+  background-color: var(--color-background-Drizzle);
+}
+
+/* ==========================================================================
+  3. Weaher Overrides (Later development)
+========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: var(--color-background-ClearNight);
+  }
+}
+
+/* ==========================================================================
+  4. Tailwind Theme Customization (later development)
+========================================================================== */
+@theme {
+  /* === Colors === */
+
+  /* === Background Images === */
+
+  /* === Shadows === */
+  /* === Fonts === */
+  /* --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-ibm-plex-serif: var(--font-ibm-plex-serif);
+  --font-thin: 100;
+  --font-light: 300;
+  --font-regular: 400;
+  --font-medium: 500; */
+  /* === Custom Text Sizes === */
+
+  /* === Container Settings (v4 way) === */
+  /* --container-padding: 2rem; */
+  /* --container-2xl: 1400px; */
+}
+
+/* ==========================================================================
+  5. Custom Utilities & Components
+========================================================================== */
+
+@layer utilities {
+  .weather-location {
+    @apply text-[22px] leading-[22px];
+  }
+
+  .weather-temp {
+    @apply text-[90px] leading-20 tracking-[-2px];
+  }
+
+  .weather-condition {
+    @apply text-[24px] leading-6 opacity-80;
+  }
+
+  .weather-hilo {
+    @apply text-[18px] leading-[18px];
+  }
+
+  /* --- Header Components --- */
+  .header {
+    @apply flex flex-col text-center items-center  text-white;
+  }
+  /* --- Sidebar Components (later development) --- */
+  /* --- Layout Components (later development) --- */
+  /* .layout-grid {
+    @apply grid
+      grid-cols-1
+      md:grid-cols-2
+      lg:grid-cols-3
+      gap-6
+      md:gap-8
+      lg:gap-10;
+  } */
+  /* --- Card Components (later development)--- */
+}
