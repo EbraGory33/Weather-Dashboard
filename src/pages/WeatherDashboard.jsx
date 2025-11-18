@@ -31,7 +31,11 @@ function WeatherDashboard() {
         </>
       ) : (
         // <Skeleton/>
-        <></>
+        <>
+          <h1 className="flex justify-center text-white">
+            Search Location for Weather conditions
+          </h1>
+        </>
       )}
 
       {/* Work In Progress */}
