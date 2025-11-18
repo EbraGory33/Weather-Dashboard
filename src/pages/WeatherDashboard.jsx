@@ -1,3 +1,4 @@
+import { useWeather } from "../context/WeatherContext";
 import {
   Header,
   HourlyForecast,
@@ -13,14 +14,15 @@ import {
   // Pressure,
   // Averages,
 } from "../components/weather";
-import { searchLocation } from "../components/common";
+import { SearchLocation, Dropdown } from "../components/common";
 // import { LayoutGrid } from "../components/common"; (later development)
 
 function WeatherDashboard() {
   const { selectedLocation } = useWeather();
   return (
     <>
-      <Header />
+      <SearchLocation />
+      <Dropdown />
       {selectedLocation ? (
         <>
           <Header />
@@ -28,7 +30,7 @@ function WeatherDashboard() {
           <TenDayForecast />
         </>
       ) : (
-        <searchLocation />
+        <></>
       )}
 
       {/* Work In Progress */}

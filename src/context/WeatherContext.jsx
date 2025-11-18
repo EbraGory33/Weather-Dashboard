@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useCallback } from "react";
+import { fetchLocationSuggestions } from "../services/weatherApi";
 
 const WeatherContext = createContext();
 
@@ -59,9 +60,13 @@ export function WeatherProvider({ children }) {
     query,
     setQuery,
 
+    setSearchResults,
     searchResults,
-    searchLocations,
 
+    // searchLocations,
+    fetchLocationSuggestions,
+
+    setSelectedLocation,
     selectedLocation,
     handleSelectLocation,
 

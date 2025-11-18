@@ -2,17 +2,22 @@ import axios from "axios";
 
 const apiClient = axios.create({
   baseURL: "",
-  withCredentials: true,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-export async function apiFetch(path, data, method = "GET") {
+export async function apiFetch(
+  path,
+  skipCredentials = true,
+  method = "GET",
+  data
+) {
   try {
     const config = {
       url: path,
       method,
+      withCredentials: skipCredentials ? false : true,
       data: ["POST", "PUT", "PATCH", "DELETE"].includes(method)
         ? data
         : undefined,

@@ -16,9 +16,9 @@ html {
 }
 
 /* TEMP: Debug overflow layout */
-* {
+/* * {
   border: 1px solid red;
-}
+} */
 
 /* ==========================================================================
   2. Root Variables
@@ -79,6 +79,33 @@ html {
 ========================================================================== */
 
 @layer utilities {
+  /* --- Search Bar --- */
+  .search-bar {
+    @apply w-[200px] h-[28px] fixed top-3 right-3 flex rounded-lg bg-[#262626];
+  }
+  .search-icon {
+    @apply flex justify-center w-7 h-7;
+  }
+  .search-field {
+    @apply flex-1 bg-transparent border-none pl-1 pr-2 text-sm text-[#dedede] text-[12px] placeholder-[#a7a7a7] focus:outline-none;
+  }
+
+  /* --- Search Results --- */
+  .search-results {
+    @apply fixed top-[60px] right-0.5 w-[284px] bg-[#383838] text-white rounded-lg p-2 font-sans;
+  }
+  .search-results p {
+    @apply text-[12px] font-medium text-[#a5a5a5] py-0.5 px-3;
+  }
+  .search-results ul li {
+    @apply cursor-pointer hover:bg-[#0359d1] rounded-sm;
+  }
+
+  .search-results ul li p {
+    @apply text-white;
+  }
+
+  /* --- Weather Components --- */
   .weather-location {
     @apply text-[22px] leading-[22px];
   }
