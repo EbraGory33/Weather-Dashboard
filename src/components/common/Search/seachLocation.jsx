@@ -1,24 +1,14 @@
 import { useWeather } from "../../../context/WeatherContext";
 
 export default function SearchLocation() {
-  const {
-    searchResults,
-    setSearchResults,
-    setSelectedLocation,
-    fetchLocationSuggestions,
-  } = useWeather();
+  const { setSearchResults, fetchLocationSuggestions } = useWeather();
+
   function setLocation(e) {
     e.preventDefault();
-    console.log(e.target.value);
-    const data = fetchLocationSuggestions(e.target.value).then((res) => {
-      console.log(res);
+    if (e.target.value.trim() === "") return;
+    fetchLocationSuggestions(e.target.value).then((res) => {
       setSearchResults(res.results);
     });
-    console.log(data);
-    console.log(searchResults);
-    // const location = e.target.location.value;
-    // setSelectedLocation(location);
-    // setSearchResults([]);
   }
   return (
     <div className="search-bar">

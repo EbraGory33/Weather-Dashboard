@@ -12,15 +12,30 @@ export async function fetchLocationSuggestions(name, count = 15) {
   }
 }
 
-// (async () => {
-const a = await apiFetch(
-  "https://geocoding-api.open-meteo.com/v1/search?name=New&count=50"
-);
-console.log({ a });
+export async function fetchCurrentConditions(lat, lon) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code,is_day,wind_speed_10m&hourly=temperature_2m,apparent_temperature,weather_code,precipitation_probability,wind_speed_10m,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,sunrise,sunset&forecast_days=7&timezone=auto&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch`;
+  try {
+    const data = await apiFetch(url);
+    return data;
+  } catch (error) {
+    console.error("Error fetching location suggestions:", error);
+    return [];
+  }
+}
 
-//   //   const b = await apiFetch(
-//   //     "https://api.open-meteo.com/v1/forecast?latitude=40.8448&longitude=-73.8648&current=temperature_2m,apparent_temperature,weather_code,is_day,wind_speed_10m&hourly=temperature_2m,apparent_temperature,weather_code,precipitation_probability,wind_speed_10m,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,sunrise,sunset&forecast_days=7&timezone=auto&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch"
-//   //   );
+// (async () => {
+// const a = await apiFetch(
+//   "https://geocoding-api.open-meteo.com/v1/search?name=New&count=50"
+// );
+// console.log({ a });
+
+// const b = await apiFetch(
+//   "https://api.open-meteo.com/v1/forecast?latitude=40.8448&longitude=-73.8648&current=temperature_2m,apparent_temperature,weather_code,is_day,wind_speed_10m&hourly=temperature_2m,apparent_temperature,weather_code,precipitation_probability,wind_speed_10m,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,sunrise,sunset&forecast_days=7&timezone=auto&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch"
+// );
+// console.log({ b });
+
+// .current.temperature_2m
+// .current.apparent_temperature
 
 //   //   const c = await apiFetch(
 //   //     "https://api.open-meteo.com/v1/forecast?latitude=40.8448&longitude=-73.8648&current=temperature_2m,apparent_temperature,weather_code,is_day,wind_speed_10m,wind_gusts_10m&timezone=auto&temperature_unit=fahrenheit&wind_speed_unit=mph"

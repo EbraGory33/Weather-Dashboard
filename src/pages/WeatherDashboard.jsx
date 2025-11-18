@@ -30,6 +30,7 @@ function WeatherDashboard() {
           <TenDayForecast />
         </>
       ) : (
+        // <Skeleton/>
         <></>
       )}
 

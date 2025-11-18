@@ -1,5 +1,14 @@
-import { createContext, useContext, useState, useCallback } from "react";
-import { fetchLocationSuggestions } from "../services/weatherApi";
+import {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from "react";
+import {
+  fetchLocationSuggestions,
+  fetchCurrentConditions,
+} from "../services/weatherApi";
 
 const WeatherContext = createContext();
 
@@ -20,6 +29,15 @@ export function WeatherProvider({ children }) {
   /** ---------------------------
    * SELECT LOCATION + FETCH WEATHER
    ----------------------------- */
+  useEffect(() => {
+    if (!selectedLocation) return;
+    fetchCurrentConditions(
+      selectedLocation.latitude,
+      selectedLocation.longitude
+    ).then((res) => {
+      setCurrent(res);
+    });
+  }, [selectedLocation]);
   const fetchWeather = useCallback(async (lat, lon) => {
     try {
       setLoading(true);
@@ -63,7 +81,6 @@ export function WeatherProvider({ children }) {
     setSearchResults,
     searchResults,
 
-    // searchLocations,
     fetchLocationSuggestions,
 
     setSelectedLocation,

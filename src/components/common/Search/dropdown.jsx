@@ -1,27 +1,7 @@
-import { useEffect } from "react";
 import { useWeather } from "../../../context/WeatherContext";
 
 export default function Dropdown() {
-  const { searchResults, setSelectedLocation, fetchLocationSuggestions } =
-    useWeather();
-  //   const { setSelectedLocation, fetchLocationSuggestions } = useWeather();
-  //   const searchResults = [
-  //     {
-  //       name: "New York",
-  //       admin1: "NY",
-  //       country: "USA",
-  //       id: 1,
-  //     },
-  //     {
-  //       name: "New York",
-  //       admin1: "NY",
-  //       country: "USA",
-  //       id: 2,
-  //     },
-  //   ];
-  useEffect(() => {
-    console.log({ searchResults });
-  }, [searchResults]);
+  const { searchResults, setSelectedLocation, setSearchResults } = useWeather();
 
   return (
     <>
@@ -32,7 +12,9 @@ export default function Dropdown() {
             {searchResults.map((location) => (
               <li
                 key={location.id}
-                onClick={() => setSelectedLocation(location)}
+                onClick={() => {
+                  setSelectedLocation(location), setSearchResults([]);
+                }}
               >
                 <p>
                   {location.name}, {location.admin1}, {location.country}
